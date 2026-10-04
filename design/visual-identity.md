@@ -1,48 +1,18 @@
-# Identidade Visual — PILA
+# Identidade Pila
 
-## Paleta — "Brasileiro Moderno"
+Paleta escolhida pela Giselly a partir da referência enviada:
 
-### Cores principais
-| Hex | Nome | Uso |
-|---|---|---|
-| `#FFD93D` | Amarelo Pila | Cor do Jota, marca, CTAs |
-| `#1A1A2E` | Azul-noite profundo | Background, sofisticação |
-| `#FF6B6B` | Vermelho coral | Alertas divertidos, "ô loco bicho" |
-| `#06D6A0` | Verde menta | Conquistas, "tá indo bem" |
-| `#FF9F1C` | Laranja queimado | XP/Respeito, energia |
+| Cor | Valor | Uso |
+| --- | --- | --- |
+| Eggshell | #EFE7D4 | Fundo claro e texto sobre azul |
+| Yellow green | #B8CE4F | Simulação e resumo do planejamento |
+| Tiger flame | #FF5E32 | Registro de gastos e pagamentos |
+| Dark ultramarine | #1A0088 | Saldo, ações, texto e navegação |
 
-### Acentos
-| Hex | Nome | Uso |
-|---|---|---|
-| `#F4F1DE` | Off-white quente | Textos sobre dark |
-| `#E63946` | Vermelho carrasco | Quando o Jota tá BRAVO de verdade |
+Usar texto azul sobre creme, verde e coral. Não usar branco sobre coral ou verde. No tema escuro, superfícies auxiliares recebem variações profundas da paleta; os destaques sólidos preservam as quatro cores.
 
-## Tipografia
-| Função | Fonte | Peso/estilo |
-|---|---|---|
-| Display (títulos, valores) | **Clash Display** ou Boogy Brut | Chunky, sem ser infantil |
-| UI (corpo) | **Inter** ou General Sans | Limpa, BR-amigável |
-| Balões de fala do Jota | **Caveat** ou Patrick Hand | Handwritten, humaniza |
+A marca vetorial mantém seu desenho. Aparece na abertura e em Ajustes, sem logo nos cabeçalhos financeiros. Ajustes oferece tema claro/escuro/sistema, idioma e escala de leitura.
 
-## Princípios estéticos
-- Cartoon **premium adulto** (Pixar miniatura, NÃO emoji infantil)
-- Cantos arredondados generosos
-- Sombras coloridas, nunca preto puro
-- Microinterações exageradas (squash & stretch real)
-- Cards "afundam" quando pressionados (peso real)
-- Confetes, balões, fogos em conquistas — over-the-top de propósito
-- Shake violento da tela quando gasta acima da meta
+Navegação com quatro ícones, curva transparente e botão ativo que acompanha a curva por animação nativa. Faixa e bolinha têm o mesmo azul em todos os destinos. Ícones usam creme. Segue o espaçamento inferior do Cook: máximo entre 8 e inset inferior menos 16. A barra ocupa espaço próprio no layout e o conteúdo termina acima dela; a área inferior tem continuidade com a cor da barra. Respeitar movimento reduzido e nomes acessíveis, sem rótulos visíveis.
 
-## Referências
-- **Duolingo** — mascote expressivo, cores vibrantes, microanimações
-- **Cash App** — ousadia visual, tipografia chunky
-- **Headway / Finch** — cartoon adulto
-- **Mailchimp Freddie + Notion Mascot** — personagens com personalidade
-- **Pixar** — premium cartoon
-- **Spotify Wrapped** — formato roast compartilhável
-
-## NÃO fazer
-- Paleta de banco (azul corporativo, cinza)
-- Ícones flat genéricos
-- Fonte fina/elegante (é chunky)
-- Estética infantil (Duolingo é referência de gamificação, não de público)
+Organização por espaço e hierarquia. Sem divisórias ornamentais, setas diagonais ou numerações decorativas. Gráficos e cores representam registros reais e controles funcionais. Não usar ícones genéricos como decoração de seções ou como logo.

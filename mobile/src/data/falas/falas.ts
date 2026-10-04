@@ -1,6 +1,6 @@
 export const falasHome: string[] = [
   "Bom dia. Hoje a gente economiza ou hoje a gente chora? Você decide.",
-  "Acorda, vagabundo financeiro. Tem grana pra contar.",
+  "Bom dia. Sua carteira pediu cinco minutos da sua atenção.",
   "Café da manhã pago em casa? Já começou bem o dia.",
   "Fim do dia. Vamos ver o estrago.",
   "Sexta. Cuidado. Você sabe do que tô falando.",

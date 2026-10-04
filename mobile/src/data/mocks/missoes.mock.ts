@@ -17,7 +17,7 @@ export const MISSOES_MOCK: Missao[] = [
     titulo: "Cozinhe 3x essa semana",
     descricao: "Pode ser miojo turbinado, vale.",
     porqueImporta:
-      "Delivery tem taxa, entrega, serviço — fácil somar 30% em cima. Cozinhar 3 vezes na semana economiza ~R$ 200/mês em média.",
+      "Separar algumas refeições da semana ajuda a perceber quanto você gasta por conveniência. O Jota aceita até arroz com ovo.",
     dificuldade: "media",
     recompensaRespeito: 30,
     prazo: "semanal",
@@ -39,7 +39,7 @@ export const MISSOES_MOCK: Missao[] = [
     titulo: "Compara 2 preços antes de comprar",
     descricao: "Vale pra qualquer compra acima de R$ 50.",
     porqueImporta:
-      "5 minutos comparando preço economiza, em média, 12% — significativamente mais do que qualquer cashback.",
+      "Comparar o mesmo produto antes de comprar dá tempo para pensar e pode revelar um preço melhor.",
     dificuldade: "media",
     recompensaRespeito: 20,
     prazo: "semanal",
@@ -61,7 +61,7 @@ export const MISSOES_MOCK: Missao[] = [
     titulo: "Passa do dia 25 sem cheque especial",
     descricao: "Sobrevivente do fim do mês.",
     porqueImporta:
-      "Cheque especial cobra até 8% ao mês — uma das maiores taxas de crédito do mundo. Não use, nunca.",
+      "Conhecer o saldo e os gastos do mês ajuda a perceber o aperto antes de entrar no limite da conta.",
     dificuldade: "dificil",
     recompensaRespeito: 60,
     prazo: "mensal",

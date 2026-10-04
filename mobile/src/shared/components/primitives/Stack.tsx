@@ -1,11 +1,17 @@
-import { View, type ViewStyle } from "react-native";
+import { View, type ViewStyle, type ViewProps } from "react-native";
 
 import { space } from "@/src/shared/theme/tokens";
 
 type SpacingKey = keyof typeof space;
 
 type Align = "stretch" | "flex-start" | "center" | "flex-end" | "baseline";
-type Justify = "flex-start" | "center" | "flex-end" | "space-between" | "space-around" | "space-evenly";
+type Justify =
+  | "flex-start"
+  | "center"
+  | "flex-end"
+  | "space-between"
+  | "space-around"
+  | "space-evenly";
 
 type Props = {
   children: React.ReactNode;
@@ -13,11 +19,20 @@ type Props = {
   align?: Align;
   justify?: Justify;
   style?: ViewStyle;
+  onLayout?: ViewProps["onLayout"];
 };
 
-export function Stack({ children, gap = "md", align, justify, style }: Props) {
+export function Stack({
+  children,
+  gap = "md",
+  align,
+  justify,
+  style,
+  onLayout,
+}: Props) {
   return (
     <View
+      onLayout={onLayout}
       style={[
         { flexDirection: "column", gap: space[gap] },
         align ? { alignItems: align } : null,
@@ -30,9 +45,17 @@ export function Stack({ children, gap = "md", align, justify, style }: Props) {
   );
 }
 
-export function Inline({ children, gap = "md", align = "center", justify, style }: Props) {
+export function Inline({
+  children,
+  gap = "md",
+  align = "center",
+  justify,
+  style,
+  onLayout,
+}: Props) {
   return (
     <View
+      onLayout={onLayout}
       style={[
         { flexDirection: "row", gap: space[gap] },
         align ? { alignItems: align } : null,

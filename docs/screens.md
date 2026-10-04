@@ -1,46 +1,23 @@
-# Telas
+# Telas do Pila
 
-## Onboarding — "Audiência Inicial"
-1. **Oi, eu sou o Jota** — apresentação direta com humor. "Vou ser sincero contigo. Sem mimimi, sem firula. Bora?"
-2. **Vamos ver o estrago** — situação atual. Opções: "Tô bem" / "Tô no zero a zero" / "Tô no buraco" / "Prefiro não responder e fingir que tá tudo ok"
-3. **Qual seu vício?** — maior fraqueza: iFood, compras online, balada, café, assinaturas. Jota faz cara de "ihhhh"
-4. **Quanto quer guardar?** — meta com sugestões. Jota comenta: "Ousado. Gostei." / "Modesto, hein? Tudo bem, vamos com calma."
-5. **Conhece seu cofre** — apresenta o cofre inicial (caixa de papelão furada). "Esse é seu cofre. Sim, tá feio. A gente conserta."
+- **Início**: saldo atual, compromissos até a próxima entrada, três próximos eventos e previsão do fechamento. Configuração inicial e modo exemplo ficam disponíveis.
+- **Gastos**: compras realizadas no período, filtros à vista/crédito, cartão, categorias e compras em lotes de vinte. Faturas ficam no detalhe de cada cartão, com parcelas e edição do total informado. Compras no crédito não reduzem o saldo da conta até o pagamento da fatura.
+- **Agenda**: pendências de renda, contas, faturas e reserva; histórico de pagamentos e recebimentos; edição dos cadastros de contas. Único destino principal para confirmar compromissos.
+- **Planejar**: projeção de seis meses, gráfico com valores mensais e simulação antes/depois, alertas de saldo negativo durante o mês e reserva mensal.
+- **Minha renda e dados**: salário e outras receitas, ajuste do saldo e gestão do armazenamento. Acessível pela tela Ajustes, fora da barra inferior.
 
-## Home — "Tribunal"
-- Jota grande no centro, animado conforme status do dia
-- Balão de fala com **comentário do dia** (gerado dinamicamente)
-- Saldo com framing emocional: "Sobrou R$ 347. Calma com isso, hein."
-- Cofre no canto inferior direito, sempre visível
-- Botão grande **"+ Registrei um gasto"** e botão menor **"Eu Resisti!"** (gera Respeito)
-- Bottom nav: Casa · Cofre · Missões · Histórico · Eu
+As abas conservam os nomes internos das rotas anteriores para reduzir mudanças desnecessárias; seus rótulos são Início, Gastos, Agenda e Planejar. A rota de dados é /perfil, numa tela com retorno nativo.
 
-## Cofre
-- Visualização 3D do cofre atual (estágio 1–7)
-- Abrir cofre → vê moedas dentro animadas, som "tchin tchin"
-- Distância até próxima evolução
-- Jota do lado comenta o ritmo
+Categorias anteriores ausentes aparecem como Sem categoria. Total de fatura informado e compras detalhadas são reconciliados pelo maior valor. A conferência com o banco continua necessária.
 
-## Missões
-- Lista da semana
-- Cada missão tem recompensa em Respeito
-- Narração do Jota com personalidade
-- Histórico de missões concluídas/falhadas
+- **Ajustes**: marca, tema claro/escuro/sistema, idioma português/inglês, escalas de texto com prévia, acesso à renda e informações do app. Acesso pelo cabeçalho do Início.
 
-## Histórico — "Diário de Bordo do Jota"
-- Timeline de gastos, cada um com reação do Jota ao lado (cara feia, olhinhos brilhando, queixo caído)
-- Filtros: categoria, período, valor
-- No fim do mês vira o **Relatório Roast**
+## Interações principais
 
-## Eu / Perfil + Loja do Jota
-- Status atual (nível dos 10)
-- Galeria de troféus
-- **Loja**: roupas, cenários, vozes regionais, pacotes de frases especiais (gasta Respeito)
-- Configurações
+- Início: configuração antes do painel; registro direto numa janela; renda comprometida em anel.
+- Gastos: categorias selecionáveis, lista filtrada com rolagem até os resultados e faturas horizontais.
+- Agenda: faixa de dias com quantidades reais, filtro por dia e confirmação ao tocar no compromisso.
+- Planejar: seleção mensal no gráfico, valores e parcelas de exemplo selecionáveis e comparação imediata; períodos posteriores acessíveis pela paginação do gráfico.
+- Ajuda: explicações pelo botão de ajuda; campos adicionais em Datas e outras opções.
 
-## Veredito (Insights mensais)
-- Análises escritas como **sentenças judiciais**:
-  > "Após análise minuciosa dos autos, este Tribunal declara o réu CULPADO de gastar R$ 487 em delivery. Pena: cozinhar arroz por 7 dias."
-- Gráficos com cara de prova de tribunal
-- Recomendações ácidas do Jota: "Esse Spotify Family de 5 pessoas e você usa sozinho. Pensa nisso."
-- Card compartilhável (roast mensal)
+A barra inferior exibe somente ícones. Os nomes permanecem nos leitores de tela. A marca continua restrita à abertura e aos Ajustes.

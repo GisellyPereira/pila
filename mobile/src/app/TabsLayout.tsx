@@ -1,78 +1,26 @@
-import { Ionicons } from "@expo/vector-icons";
+import { usePreferences } from "@/src/shared/preferences/PreferencesProvider";
+
 import { Tabs } from "expo-router";
-
-import { color, font, space } from "@/src/shared/theme/tokens";
-
-type IconName = React.ComponentProps<typeof Ionicons>["name"];
-
+import { View } from "react-native";
+import { CurvedTabBar } from "@/src/shared/components/navigation/CurvedTabBar";
 export default function TabsLayout() {
+  const { color, t } = usePreferences();
+
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: color.brand.pila,
-        tabBarInactiveTintColor: color.text.muted,
-        tabBarStyle: {
-          backgroundColor: color.bg.surface,
-          borderTopColor: color.border.subtle,
-          borderTopWidth: 1,
-          height: 68,
-          paddingBottom: space.md,
-          paddingTop: space.sm,
-        },
-        tabBarLabelStyle: {
-          fontFamily: font.bodyBold,
-          fontSize: 10,
-          textTransform: "uppercase",
-          letterSpacing: 1.2,
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Tribunal",
-          tabBarIcon: ({ color: c, size }) => (
-            <Ionicons name={"home" as IconName} color={c} size={size} />
-          ),
+    <View style={{ flex: 1, backgroundColor: color.bg.app }}>
+      <Tabs
+        tabBar={(props) => <CurvedTabBar {...props} />}
+        screenOptions={{
+          headerShown: false,
+          animation: "fade",
+          sceneStyle: { backgroundColor: color.bg.app },
         }}
-      />
-      <Tabs.Screen
-        name="cofre"
-        options={{
-          title: "Cofre",
-          tabBarIcon: ({ color: c, size }) => (
-            <Ionicons name={"lock-closed" as IconName} color={c} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="missoes"
-        options={{
-          title: "Missões",
-          tabBarIcon: ({ color: c, size }) => (
-            <Ionicons name={"trophy" as IconName} color={c} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="historico"
-        options={{
-          title: "Histórico",
-          tabBarIcon: ({ color: c, size }) => (
-            <Ionicons name={"receipt" as IconName} color={c} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="eu"
-        options={{
-          title: "Eu",
-          tabBarIcon: ({ color: c, size }) => (
-            <Ionicons name={"person" as IconName} color={c} size={size} />
-          ),
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen name="index" options={{ title: t("Início") }} />
+        <Tabs.Screen name="cartoes" options={{ title: t("Gastos") }} />
+        <Tabs.Screen name="contas" options={{ title: t("Agenda") }} />
+        <Tabs.Screen name="previsao" options={{ title: t("Planejar") }} />
+      </Tabs>
+    </View>
   );
 }

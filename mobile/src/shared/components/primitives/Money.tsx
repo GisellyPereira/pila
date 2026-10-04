@@ -1,3 +1,4 @@
+import { usePreferences } from "@/src/shared/preferences/PreferencesProvider";
 import type { TextStyle } from "react-native";
 
 import { formatBRL } from "@/src/shared/utils/formatBRL";
@@ -32,11 +33,20 @@ export function Money({
   compact = false,
   style,
 }: Props) {
-  const prefix = tone === "negative" && value > 0 ? "−" : "";
+  const { language } = usePreferences();
+  const prefix = value < 0 || (tone === "negative" && value > 0) ? "−" : "";
   return (
-    <Text variant={SIZE_VARIANT[size]} tone={TONE_MAP[tone]} style={style}>
+    <Text
+      translatable={false}
+      variant={SIZE_VARIANT[size]}
+      tone={TONE_MAP[tone]}
+      style={style}
+      numberOfLines={1}
+      adjustsFontSizeToFit
+      minimumFontScale={0.6}
+    >
       {prefix}
-      {formatBRL(Math.abs(value), compact)}
+      {formatBRL(Math.abs(value), compact, language)}
     </Text>
   );
 }

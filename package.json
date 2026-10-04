@@ -1,0 +1,12 @@
+{
+  "name": "pila",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix mobile install --no-audit --no-fund",
+    "start": "npm --prefix mobile run start -- --go --max-workers 1",
+    "start:tunnel": "npm --prefix mobile run start -- --go --max-workers 1 --tunnel",
+    "lint": "npm --prefix mobile run lint",
+    "typecheck": "npm --prefix mobile exec -- tsc --project mobile/tsconfig.json --noEmit"
+  }
+}

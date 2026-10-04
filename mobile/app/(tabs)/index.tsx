@@ -1,1 +1,1 @@
-export { default } from "@/src/features/tribunal/screens/TribunalScreen";
+export { default } from "@/src/features/finance/screens/InicioScreen";

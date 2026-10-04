@@ -6,6 +6,7 @@ type Props = {
   level?: "xl" | "l" | "m" | "s";
   tone?: "primary" | "accent" | "secondary" | "inverse";
   children: React.ReactNode;
+  translatable?: boolean;
   style?: TextStyle | TextStyle[];
 };
 
@@ -16,9 +17,20 @@ const VARIANT_MAP = {
   s: "displayS",
 } as const;
 
-export function Heading({ level = "l", tone = "primary", children, style }: Props) {
+export function Heading({
+  level = "l",
+  tone = "primary",
+  children,
+  style,
+  translatable,
+}: Props) {
   return (
-    <Text variant={VARIANT_MAP[level]} tone={tone} style={style}>
+    <Text
+      variant={VARIANT_MAP[level]}
+      tone={tone}
+      style={style}
+      translatable={translatable}
+    >
       {children}
     </Text>
   );

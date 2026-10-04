@@ -10,18 +10,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        pila: "#FFD93D",
-        noite: "#1A1A2E",
-        "noite-fundo": "#0F0F1E",
-        "noite-elevado": "#252540",
-        coral: "#FF6B6B",
-        menta: "#06D6A0",
-        laranja: "#FF9F1C",
-        creme: "#F4F1DE",
-        carrasco: "#E63946",
+        pila: "#CDB2ED",
+        noite: "#2C1C3F",
+        "noite-fundo": "#EDE7F6",
+        "noite-elevado": "#D4C3E8",
+        coral: "#A23F62",
+        menta: "#6B39BD",
+        laranja: "#D8D1EF",
+        creme: "#E2D8F0",
+        carrasco: "#9F2949",
       },
       fontFamily: {
-        display: ["ArchivoBlack_400Regular"],
+        display: ["Inter_700Bold"],
         sans: ["Inter_400Regular"],
         "sans-bold": ["Inter_700Bold"],
         handwritten: ["Caveat_400Regular"],

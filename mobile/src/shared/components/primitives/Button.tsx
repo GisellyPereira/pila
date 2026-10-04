@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -5,17 +6,15 @@ import {
   View,
   type ViewStyle,
 } from "react-native";
-
 import { useHaptics } from "@/src/shared/hooks/useHaptics";
-import { color, radius, space, type } from "@/src/shared/theme/tokens";
-
+import { radius, space } from "@/src/shared/theme/tokens";
+import { usePreferences } from "@/src/shared/preferences/PreferencesProvider";
 import { Text } from "./Text";
-
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "lg" | "md" | "sm";
-
 type Props = Omit<PressableProps, "style" | "children"> & {
   label: string;
+  labelColor?: string;
   variant?: Variant;
   size?: Size;
   loading?: boolean;
@@ -24,48 +23,10 @@ type Props = Omit<PressableProps, "style" | "children"> & {
   fullWidth?: boolean;
   style?: ViewStyle;
 };
-
-const HEIGHT: Record<Size, number> = { lg: 56, md: 48, sm: 40 };
-const FONT_VARIANT: Record<Size, "displayM" | "displayS" | "labelCaps"> = {
-  lg: "displayM",
-  md: "displayS",
-  sm: "labelCaps",
-};
-
-function backgroundFor(variant: Variant, pressed: boolean): string | undefined {
-  switch (variant) {
-    case "primary":
-      return pressed ? "#E6C235" : color.brand.pila;
-    case "secondary":
-      return "transparent";
-    case "ghost":
-      return pressed ? color.border.subtle : "transparent";
-    case "danger":
-      return pressed ? "#C92A36" : color.state.danger;
-  }
-}
-
-function textToneFor(variant: Variant): "inverse" | "primary" | "accent" {
-  switch (variant) {
-    case "primary":
-    case "danger":
-      return "inverse";
-    case "secondary":
-      return "accent";
-    case "ghost":
-      return "primary";
-  }
-}
-
-function borderFor(variant: Variant): ViewStyle {
-  if (variant === "secondary") {
-    return { borderWidth: 2, borderColor: color.brand.pila };
-  }
-  return {};
-}
-
+const HEIGHT = { lg: 56, md: 48, sm: 44 };
 export function Button({
   label,
+  labelColor,
   variant = "primary",
   size = "lg",
   loading = false,
@@ -74,53 +35,88 @@ export function Button({
   fullWidth = true,
   disabled,
   onPress,
+  onPressIn,
+  onPressOut,
   style,
   ...rest
 }: Props) {
+  const { color, scale, t } = usePreferences();
+  const [pressed, setPressed] = useState(false);
   const haptics = useHaptics();
   const isDisabled = disabled || loading;
-  const spinnerColor = variant === "primary" || variant === "danger" ? color.text.inverse : color.brand.pila;
-
+  const actionText =
+    variant === "danger" ? color.action.dangerText : color.action.text;
+  const filled = variant === "primary" || variant === "danger";
+  const background =
+    variant === "primary"
+      ? pressed
+        ? color.action.pressed
+        : color.action.primary
+      : variant === "danger"
+        ? color.action.danger
+        : pressed
+          ? color.bg.surfaceElevated
+          : variant === "secondary"
+            ? color.bg.surfaceElevated
+            : "transparent";
+  // Estilo concreto evita perder o fundo durante a interoperabilidade NativeWind/Pressable.
   return (
     <Pressable
       {...rest}
+      accessibilityRole="button"
+      accessibilityLabel={rest.accessibilityLabel ?? t(label)}
+      accessibilityState={{
+        ...rest.accessibilityState,
+        disabled: !!isDisabled,
+        busy: loading,
+      }}
       disabled={isDisabled}
+      onPressIn={(e) => {
+        setPressed(true);
+        onPressIn?.(e);
+      }}
+      onPressOut={(e) => {
+        setPressed(false);
+        onPressOut?.(e);
+      }}
       onPress={(e) => {
         if (isDisabled) return;
-        haptics(variant === "danger" ? "medium" : "light");
+        void haptics(variant === "danger" ? "medium" : "light").catch(() => {});
         onPress?.(e);
       }}
-      style={({ pressed }) => [
-        {
-          height: HEIGHT[size],
-          borderRadius: radius.lg,
-          paddingHorizontal: space.xl,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: space.sm,
-          backgroundColor: backgroundFor(variant, pressed),
-          opacity: isDisabled ? 0.5 : 1,
-          alignSelf: fullWidth ? "stretch" : "flex-start",
-          transform: pressed ? [{ scale: 0.98 }] : undefined,
-          ...borderFor(variant),
-        },
-        style,
-      ]}
+      style={{
+        minHeight: HEIGHT[size] * scale,
+        borderRadius: radius.lg,
+        paddingHorizontal: size === "sm" ? space.lg : space.xl,
+        paddingVertical: space.md,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: space.sm,
+        alignSelf: fullWidth ? "stretch" : "flex-start",
+        backgroundColor: background,
+        opacity: isDisabled ? 0.65 : 1,
+        ...style,
+      }}
     >
       {loading ? (
-        <ActivityIndicator color={spinnerColor} />
+        <ActivityIndicator
+          color={labelColor ?? (filled ? actionText : color.text.primary)}
+        />
       ) : (
         <>
-          {leftIcon ? <View>{leftIcon}</View> : null}
+          {leftIcon && <View>{leftIcon}</View>}
           <Text
-            variant={FONT_VARIANT[size]}
-            tone={textToneFor(variant)}
-            style={{ ...type[FONT_VARIANT[size]] }}
+            variant="bodyBoldM"
+            style={{
+              color: labelColor ?? (filled ? actionText : color.text.primary),
+              textAlign: "center",
+              flexShrink: 1,
+            }}
           >
             {label}
           </Text>
-          {rightIcon ? <View>{rightIcon}</View> : null}
+          {rightIcon && <View>{rightIcon}</View>}
         </>
       )}
     </Pressable>

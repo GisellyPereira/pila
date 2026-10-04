@@ -1,3 +1,4 @@
+import { usePreferences } from "@/src/shared/preferences/PreferencesProvider";
 import {
   ScrollView,
   type ScrollViewProps,
@@ -5,12 +6,14 @@ import {
   type ViewStyle,
 } from "react-native";
 import { SafeAreaView, type Edge } from "react-native-safe-area-context";
+import { useSegments } from "expo-router";
 
-import { color, space } from "@/src/shared/theme/tokens";
+import { space } from "@/src/shared/theme/tokens";
 
 type Props = {
   children: React.ReactNode;
   scroll?: boolean;
+  scrollRef?: React.RefObject<ScrollView | null>;
   contentPadding?: keyof typeof space | "none";
   edges?: Edge[];
   style?: ViewStyle;
@@ -32,11 +35,18 @@ const PADDING_MAP = {
 export function Screen({
   children,
   scroll = false,
-  contentPadding = "lg",
+  scrollRef,
+  contentPadding = "xl",
   edges = ["top"],
   style,
   scrollProps,
 }: Props) {
+  const { color } = usePreferences();
+
+  const segments = useSegments();
+  const bottomPadding = segments.some((segment) => segment === "(tabs)")
+    ? space.xl
+    : space["3xl"];
   const horizontalPadding = PADDING_MAP[contentPadding];
 
   if (scroll) {
@@ -46,11 +56,15 @@ export function Screen({
         style={{ flex: 1, backgroundColor: color.bg.app, ...style }}
       >
         <ScrollView
+          ref={scrollRef}
           {...scrollProps}
           contentContainerStyle={{
+            width: "100%",
+            maxWidth: 560,
+            alignSelf: "center",
             paddingHorizontal: horizontalPadding,
             paddingTop: space.md,
-            paddingBottom: space["3xl"],
+            paddingBottom: bottomPadding,
           }}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
@@ -66,7 +80,14 @@ export function Screen({
       edges={edges}
       style={{ flex: 1, backgroundColor: color.bg.app, ...style }}
     >
-      <View style={{ flex: 1, paddingHorizontal: horizontalPadding, paddingTop: space.md }}>
+      <View
+        style={{
+          flex: 1,
+          paddingHorizontal: horizontalPadding,
+          paddingTop: space.md,
+          paddingBottom: bottomPadding,
+        }}
+      >
         {children}
       </View>
     </SafeAreaView>

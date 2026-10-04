@@ -1,42 +1,63 @@
-/**
- * Tokens do design system PILA — única fonte de verdade.
- * tailwind.config.js importa daqui pra manter NativeWind sincronizado.
- *
- * Display font: o brief sugere Clash Display ou Boogy Brut. Usamos
- * ArchivoBlack porque tem fallback nativo via @expo-google-fonts e
- * mantém o mood chunky/sem-ser-infantil que o brief pede.
- */
-
+/** Pila: paleta escolhida pela Giselly — eggshell, yellow green, tiger flame e ultramarine. */
 export const palette = {
-  pila: "#FFD93D",
-  noite: "#1A1A2E",
-  noiteFundo: "#0F0F1E",
-  noiteElevado: "#252540",
-  coral: "#FF6B6B",
-  menta: "#06D6A0",
-  laranja: "#FF9F1C",
-  creme: "#F4F1DE",
-  carrasco: "#E63946",
+  pila: "#B8CE4F",
+  noite: "#1A0088",
+  noiteFundo: "#EFE7D4",
+  noiteElevado: "#E2DAC8",
+  coral: "#FF5E32",
+  menta: "#1A0088",
+  laranja: "#B8CE4F",
+  creme: "#EFE7D4",
+  carrasco: "#A32919",
 } as const;
-
 export const color = {
+  navigation: { background: "#1A0088", text: "#EFE7D4" },
+  hero: { background: "#1A0088", text: "#EFE7D4", muted: "#EFE7D4" },
+  feature: {
+    blueSurface: "#EFE7D4",
+    blueInk: "#1A0088",
+    blueStrong: "#1A0088",
+    blueText: "#EFE7D4",
+    blueMuted: "#EFE7D4",
+    roseSurface: "#FF5E32",
+    roseInk: "#1A0088",
+    roseStrong: "#FF5E32",
+    roseText: "#1A0088",
+    roseMuted: "#1A0088",
+    slateSurface: "#B8CE4F",
+    slateInk: "#1A0088",
+    slateStrong: "#B8CE4F",
+    slateText: "#1A0088",
+    slateMuted: "#1A0088",
+  },
+  chart: {
+    purple: "#1A0088",
+    pink: "#FF5E32",
+    blue: "#362297",
+    lilac: "#6957A8",
+    slate: "#B8CE4F",
+  },
+  action: {
+    primary: "#1A0088",
+    pressed: "#120060",
+    text: "#EFE7D4",
+    danger: "#FF5E32",
+    dangerText: "#1A0088",
+  },
   bg: {
     app: palette.noiteFundo,
-    surface: palette.noite,
+    surface: palette.creme,
     surfaceElevated: palette.noiteElevado,
-    overlay: "rgba(0,0,0,0.6)",
+    overlay: "rgba(16,11,37,0.65)",
   },
   text: {
-    primary: palette.creme,
-    secondary: "rgba(244,241,222,0.72)",
-    muted: "rgba(244,241,222,0.48)",
-    inverse: palette.noite,
-    accent: palette.pila,
+    primary: "#1A0088",
+    secondary: "#1A0088",
+    muted: "#1A0088",
+    inverse: "#EFE7D4",
+    accent: "#1A0088",
   },
-  brand: {
-    pila: palette.pila,
-    noite: palette.noite,
-  },
+  brand: { pila: palette.pila, noite: palette.noite },
   accent: {
     coral: palette.coral,
     menta: palette.menta,
@@ -45,15 +66,12 @@ export const color = {
     carrasco: palette.carrasco,
   },
   state: {
-    success: palette.menta,
-    warning: palette.laranja,
-    danger: palette.carrasco,
-    info: palette.pila,
+    success: "#1A0088",
+    warning: "#1A0088",
+    danger: "#A32919",
+    info: "#1A0088",
   },
-  border: {
-    subtle: "rgba(244,241,222,0.08)",
-    strong: "rgba(244,241,222,0.18)",
-  },
+  border: { subtle: "rgba(26,0,136,0.12)", strong: "rgba(26,0,136,0.30)" },
 } as const;
 
 export const space = {
@@ -77,18 +95,18 @@ export const radius = {
 } as const;
 
 export const font = {
-  display: "ArchivoBlack_400Regular",
+  display: "Inter_700Bold",
   body: "Inter_400Regular",
   bodyBold: "Inter_700Bold",
-  hand: "Caveat_400Regular",
-  handBold: "Caveat_700Bold",
+  hand: "Inter_400Regular",
+  handBold: "Inter_700Bold",
 } as const;
 
 export const type = {
   displayXL: {
     fontFamily: font.display,
-    fontSize: 48,
-    lineHeight: 52,
+    fontSize: 32,
+    lineHeight: 38,
     letterSpacing: -1.2,
   },
   displayL: {
@@ -117,13 +135,13 @@ export const type = {
     fontFamily: font.bodyBold,
     fontSize: 11,
     lineHeight: 14,
-    letterSpacing: 1.4,
+    letterSpacing: 0.8,
     textTransform: "uppercase" as const,
   },
   moneyXL: {
     fontFamily: font.display,
-    fontSize: 56,
-    lineHeight: 60,
+    fontSize: 40,
+    lineHeight: 48,
     letterSpacing: -1.8,
     fontVariant: ["tabular-nums" as const],
   },
@@ -136,7 +154,7 @@ export const type = {
   },
   moneyM: {
     fontFamily: font.display,
-    fontSize: 20,
+    fontSize: 18,
     lineHeight: 24,
     letterSpacing: -0.2,
     fontVariant: ["tabular-nums" as const],
@@ -156,9 +174,9 @@ export const shadow = {
   card: {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.03,
     shadowRadius: 14,
-    elevation: 6,
+    elevation: 0,
   },
   hero: {
     shadowColor: "#000",
